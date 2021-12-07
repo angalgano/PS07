@@ -1,0 +1,43 @@
+---
+title: "Allie's First Repo"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(ggplot2)
+library(dplyr)
+library(fivethirtyeight)
+library(lubridate)
+```
+
+## GitHub Documents :D
+
+This is an **R Markdown** _format_ used for publishing markdown documents to GitHub. When you click the **Knit** button all R code chunks are run and a markdown file (.md) suitable for publishing to GitHub is generated.
+
+## Including Code
+
+You can include R code in the document as follows:
+
+```{r}
+weekly_campaign_stops <- pres_2016_trail %>% 
+  mutate(week = floor_date(date, unit = "week")) %>% 
+  group_by(candidate, week) %>% 
+  summarize(number_of_stops = n())
+```
+
+## Including Plots
+# This is a plot
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+ggplot(data = weekly_campaign_stops, mapping = aes(x = week, y = number_of_stops, fill = candidate)) +
+  geom_col() +
+  ggtitle("Weekly stops during the 2016 presidential election")
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+# :]
